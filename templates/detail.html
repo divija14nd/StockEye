@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+<form action='{% url "search_stock" %}'>
+  <div style="display: inline-flex; width: 100%; align-items: center; height: 40px;">
+  <p style="width: fit-content; padding: 0; margin-right: 10px; margin-top: 18px; color: white">Search stock details by symbol:</p>
+  <input style="margin-right: 10px" type = "text" name="stock_name">
+  <input style="margin-right: 10px" type = "submit">
+  </div>
+</form>
+
+  <div style="display : flex; justify-content: center; flex-direction: row; margin-top:3%">
+    <table class = "detail-tbl">
+      <tr>
+          <th>Sr. No.</th>
+          <th>Strongly Recommend</th>
+      </tr>
+      {% for i in qs_strongly_recommended %}
+      <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.stock}}</td>
+      </tr>
+      {% endfor %}
+      </table>
+    <table class = "detail-tbl">
+      <tr>
+        <th>Sr. No.</th>
+          <th>Recommend</th>
+      </tr>
+      {% for i in qs_recommended %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+          <td>{{i.stock}}</td>
+      </tr>
+      {% endfor %}
+      </table>
+    <table class = "detail-tbl">
+      <tr>
+        <th>Sr. No.</th>
+          <th>Not Recommend</th>
+      </tr>
+      {% for i in qs_not_recommended %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+          <td>{{i.stock}}</td>
+      </tr>
+      {% endfor %}
+      </table>
+  </div>
+{% endblock %}
+
+{% block javascript %}
+  <script>
+    const detail_btn = document.getElementById('detail_btn');
+    const home_btn = document.getElementById('home_btn');
+
+    detail_btn.className = " active ";
+    home_btn.className = "";
+  </script>
+{% endblock %}

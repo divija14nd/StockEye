@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <h style="font-size:4rem;color:#7100ff;margin-right:1000px;margin-left:12%"> StockEye</h>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  </head>
+  <body style="background: url('{% static 'bg1.jpg' %}');">
+    <div style="position: absolute">
+      <img style="margin-top: -55%" width="10%" src="{% static 'Icon.png' %}" alt="Sorry, can't load the image">
+    </div>
+    <p style="color:white;margin-left:12%">Stock search made easy!!</p>
+    <hr style = "width:100%;height:2px;margin-left:0;margin-top:10px;color:darkblue;background-color:darkblue;">
+    <ul>
+  <li><a class="active" href="{% url 'home' %}" id="home_btn">Home</a></li>
+  <li><a href="{% url 'detail' %}" id="detail_btn">Detail</a></li>
+  <li><a href="#">Search</a></li>
+  <li><a href="#">About</a></li>
+</ul>
+
+{% block content %}{% endblock %}
+
+<footer>
+   <hr style="width:100%;height:2px;margin-left:0;margin-top:430px;color:darkblue;background-color:darkblue;">
+   <f>Divija Godse<br>
+   <a href="mailto: divijagodse@gmail.com">divijagodse@gmail.com</a></f>
+</footer>
+
+{% block javascript %}{% endblock %}
+</body>
+
+</html>
