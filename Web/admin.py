@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Verdict
 
-# Register your models here.
+# ----------------- Registering Verdict Model ---------------- #
 
 @admin.register(Verdict)
 class VerdictAdmin(admin.ModelAdmin):
