@@ -6,6 +6,7 @@ import plotly.express as px
 from Web.models import Verdict
 
 #----------------------------------------RECOMMENDATION FUNCTION-------------------------------------------------------
+
 def recommend(stock_symbol):
     stock_values = investpy.technical.moving_averages(name=stock_symbol, country = "India", product_type = "Stock", interval='daily')
     try:
