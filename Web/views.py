@@ -3,10 +3,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Verdict
 from basicFunction import priceGraph 
-
 from django.core.paginator import Paginator
 
 # -------------------------------- Home function View -------------------------------- #
+
 def home(request):
     qs = Verdict.objects.filter(verdict = "Strongly Recommend")
     paginator = Paginator(qs, 10)
@@ -18,13 +18,17 @@ def home(request):
         "data" : page_obj
     }
     return render(request, 'home_demo1.html', context)
+
 # ----------------------------- Search Stock function View ----------------------------- #
+
 def search_stock(request):
     stock_name = request.GET['stock_name']
     print(stock_name)
     graph = priceGraph(stock_name)
     return render(request,'stock_graph.html', {'graph': graph} )
+
 # ----------------------------- Stock Detail function View ----------------------------- #
+
 def detail(request):
     
     qs_strongly_recommended = Verdict.objects.filter(verdict = "Strongly Recommend")
